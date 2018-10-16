@@ -14,25 +14,41 @@
                 <tr>
                     <td><label for="username">Username</label></td>
                     <td><input name="username" type="text" value="">
-                    <span class="error"></span>
+                    <span class="error"
+                    {%if username_error %}
+                    <p class="error">{{ username_error }}</p>
+                    {% endif %}
+                    </span>
                     </td>
                 </tr>
                 <tr>
                     <td><label for="password">Password</label></td>
                     <td><input name="password" type="password">
-                        <span class="error"></span>
+                    <span class="error"
+                    {%if password_error %}
+                    <p class="error">{{ password_error }}</p>
+                    {% endif %}
+                    </span>
                     </td>
                 </tr>
                 <tr>
-                    <td><label for ="verify password">Verify Password</label></td>
-                    <td><input name="verify password" type="password">
-                        <span class="error"></span>
+                    <td><label for ="verify">Verify</label></td>
+                    <td><input name="verify" type="password">
+                    <span class="error"
+                    {%if verify_error %}
+                    <p class="error">{{ verify_error }}</p>
+                    {% endif %}
+                    </span>
                     </td>
                 </tr>
                 <tr>
                     <td><label for="email">Email (optional)</label></td>
                     <td><input name="email" type="text" value="">
-                        <span class="error"></span>
+                    <span class="error"
+                    {%if email_error %}
+                    <p class="error">{{ email_error }}</p>
+                    {% endif %}
+                    </span>
                     </td>
                 </tr>
             </table>
