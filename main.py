@@ -70,8 +70,8 @@ def user_signup_validation():
 
     err_required = "Required field"
     err_reenter_pw = "Please re-enter password"
-    err_char_count = "must be between 3 and 20 characters"
-    err_no_spaces = "may not contain spaces"
+    err_char_count = " must be between 3 and 20 characters"
+    err_no_spaces = " may not contain spaces"
 
     if not empty_val(password):
         password_error = err_required
@@ -143,14 +143,14 @@ def user_signup_validation():
             verify_error = err_reenter_pw
         
         elif not email_period(email):
-            email_error = "Email must contain ."
+            email_error = "Email must contain a period"
             password = ''
             verify = ''
             password_error = err_reenter_pw
             verify_error = err_reenter_pw
         
         elif not multiple_email_periods(email):
-            email_error = "Email must contain only one ."
+            email_error = "Email must contain only one period"
             password = ''
             verify = ''
             password_error = err_reenter_pw
@@ -170,17 +170,19 @@ def user_signup_validation():
         username = username
         return redirect('/welcome?username={0}'.format(username))
     else:
+        #username = request.form['username']
+        #email = request.form['email']
         return render_template('home_page.html', username_error=username_error, username=username, password_error=password_error, password=password, verify_error=verify_error, verify=verify, email_error=email_error, email=email)
 
-@app.route('/')
-def keep():
-    username = request.args.get('username')
-    email = request.args.get('email')
-    return render_template('home_page.html', username = username, email = email)
+#@app.route('/')
+#def keep():
+#    username = request.args.get('username')
+#    email = request.args.get('email')
+#    return render_template('home_page.html', username=username, email=email)
 
 @app.route('/welcome')
 def valid_signup():
     username = request.args.get('username')
-    return render_template('welcome_page.html', username=username)
+    return render_template('welcome_page.html', username = username)
 
 app.run()
